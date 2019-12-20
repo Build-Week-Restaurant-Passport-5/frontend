@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const RestaurantList = props => {
-    const [restaurants, setRestaurants] = useState([]);
-
-    setRestaurants([
+    const [restaurants, setRestaurants] = useState([
         {
             id:1, 
             name:'Steak House', 
             address:'123 Main St', 
             city: 'San Francisco', 
-            zipcode:91234, 
-            phoneNumber: 555-01234, 
+            zipcode:'91234', 
+            phoneNumber: '555-01234', 
             websiteURL:'http://www.harrisrestaurant.com/', 
             myRating:'', 
             notes:'', 
@@ -23,8 +21,8 @@ const RestaurantList = props => {
             name:'Italian Pizza', 
             address:'125 Main St', 
             city: 'San Francisco', 
-            zipcode:91234, 
-            phoneNumber: 555-01235, 
+            zipcode:'91234', 
+            phoneNumber: '555-01235', 
             websiteURL:'https://www.caffebaonecci.com/', 
             myRating:'', 
             notes:'', 
@@ -32,10 +30,10 @@ const RestaurantList = props => {
             userId: 'U01'        
         }
     ]);
+
   
   
-    useEffect(() => {
-      const getRestaurants = () => {
+    const getRestaurants = () => {
         // axios
         //   .get("insert api url")
         //   .then(response => {
@@ -46,7 +44,9 @@ const RestaurantList = props => {
         //     console.error("Server Error", error);
         //   });
       };
-    });
+
+    useEffect(getRestaurants,[]);
+
 
     return (
         <div className="restaurant-list">
