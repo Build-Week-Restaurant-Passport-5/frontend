@@ -1,10 +1,23 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Route } from "react-router-dom";
+import RestaurantList from "./components/RestaurantList";
+import Navigation from "./components/partials/Navigation";
+import Footer from "./components/partials/Footer";
 
-import RestaurantCard from "./components/RestaurantCard";
+import { Container } from "semantic-ui-react";
 
 function App() {
-  return <div className='App'></div>;
+  return (
+    <div>
+      <Navigation />
+      <Container text style={{ marginTop: "2em" }}>
+        <Route exact path='/' render={props => <RestaurantList {...props} />} />
+        
+        {/* <Route path='/restaurant/:id' render={props => <RestaurantDetails {...props} />} /> */}
+      </Container>
+	  <Footer />
+    </div>
+  );
 }
 
 export default App;
