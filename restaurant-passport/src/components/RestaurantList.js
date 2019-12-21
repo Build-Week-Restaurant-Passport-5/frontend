@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const RestaurantList = props => {
     const [restaurants, setRestaurants] = useState([
         {
-            id:1, 
-            name:'Steak House', 
-            address:'123 Main St', 
+            restaurantId:1, 
+            restaurantName:'Steak House', 
+            streetAddress:'123 Main St', 
             city: 'San Francisco', 
             zipcode:'91234', 
             phoneNumber: '555-01234', 
@@ -17,9 +17,9 @@ const RestaurantList = props => {
             userId: 'U01'
         },
         {
-            id:2, 
-            name:'Italian Pizza', 
-            address:'125 Main St', 
+            restaurantId:2, 
+            restaurantName:'Italian Pizza', 
+            streetAddress:'125 Main St', 
             city: 'San Francisco', 
             zipcode:'91234', 
             phoneNumber: '555-01235', 
