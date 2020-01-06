@@ -11,15 +11,15 @@ export default function RestaurantCard(props) {
     <Card fluid>
       <Image src='https://via.placeholder.com/150x75.png' wrapped ui={false} />
       <Card.Content>
-        <Transition animation='pulse' duration={1000} visible={true}>
+       
           <Image
             floated='left'
             size='mini'
             src='https://files.slack.com/files-pri/T4JUEB3ME-FRYB8R0LC/restaurant-passport.png'
             width='100px'
-            onClick={toggleAnimation}
+           
           />
-        </Transition>
+        
         <Card.Header>{props.restaurant.name}</Card.Header>
         <Card.Meta>{props.restaurant.city}</Card.Meta>
         <Card.Description>This card doesn't have any info!</Card.Description>
