@@ -1,80 +1,63 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
+import { Card } from "semantic-ui-react";
+
+import RestaurantCard from "./RestaurantCard";
+
 const RestaurantList = props => {
-    const [restaurants, setRestaurants] = useState([
-        {
-            restaurantId:1, 
-            restaurantName:'Steak House', 
-            streetAddress:'123 Main St', 
-            city: 'San Francisco', 
-            zipcode:'91234', 
-            phoneNumber: '555-01234', 
-            websiteURL:'http://www.harrisrestaurant.com/', 
-            myRating:'', 
-            notes:'', 
-            stamped:false, 
-            userId: 'U01'
-        },
-        {
-            restaurantId:2, 
-            restaurantName:'Italian Pizza', 
-            streetAddress:'125 Main St', 
-            city: 'San Francisco', 
-            zipcode:'91234', 
-            phoneNumber: '555-01235', 
-            websiteURL:'https://www.caffebaonecci.com/', 
-            myRating:'', 
-            notes:'', 
-            stamped:false, 
-            userId: 'U01'        
-        }
-    ]);
+  const [restaurants, setRestaurants] = useState([
+    {
+      id: 1,
+      name: "Steak House",
+      address: "123 Main St",
+      city: "San Francisco",
+      zipcode: "91234",
+      phoneNumber: "555-01234",
+      websiteURL: "http://www.harrisrestaurant.com/",
+      myRating: "",
+      notes: "",
+      stamped: false,
+      userId: "U01"
+    },
+    {
+      id: 2,
+      name: "Italian Pizza",
+      address: "125 Main St",
+      city: "San Francisco",
+      zipcode: "91234",
+      phoneNumber: "555-01235",
+      websiteURL: "https://www.caffebaonecci.com/",
+      myRating: "",
+      notes: "",
+      stamped: false,
+      userId: "U01"
+    }
+  ]);
 
-  
-  
-    const getRestaurants = () => {
-        // axios
-        //   .get("insert api url")
-        //   .then(response => {
-        //     setRestaurant(response);
-        //     console.log(response);
-        //   })
-        //   .catch(error => {
-        //     console.error("Server Error", error);
-        //   });
-      };
+  //   const getRestaurants = () => {
+  //     axios
+  //       .get(
+  //         "http://www.figma.com/file/SgBV7eLTJ6pU38zmOxEyes/restaurant_passport"
+  //       )
+  //       .then(response => {
+  //         console.log(response);
+  //       })
+  //       .catch(error => {
+  //         console.error("Server Error", error);
+  //       });
+  //   };
 
-    useEffect(getRestaurants,[]);
+  //   useEffect(getRestaurants, []);
 
-
-    return (
-        <div className="restaurant-list">
-            {restaurants.map(item => (
-                <RestaurantDetails key={item.id} restaurant={item} />
-            ))}
-
-        </div>
-
-    )
-
+  return (
+    <Card.Group itemsPerRow={2} className='restaurant-list'>
+      {restaurants.map(item => (
+        <RestaurantCard key={item.id} restaurant={item} />
+      ))}
+    </Card.Group>
+  );
 };
 
-function RestaurantDetails({ restaurant }) {
-    const {id, name, address, city, zipcode, phoneNumber, websiteURL, myRating, notes, stamped, userId } = restaurant;
-    console.log('checking props', restaurant);
-    return (
-        <div className='container'>
-            <h1>Name: {name}</h1>
-            <h6>Address: {address}</h6>
-            <h6>City: {city}</h6>
-            <h6>Zipcode: {zipcode}</h6>
-            <h6>Phone Number: {phoneNumber}</h6>
-            <a href={websiteURL}>Website</a>
-        </div>
-    );
-}
-
 export default RestaurantList;
-
-

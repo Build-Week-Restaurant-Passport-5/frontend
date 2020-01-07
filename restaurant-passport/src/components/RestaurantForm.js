@@ -172,3 +172,4 @@ const FormikRestaurantForm = withFormik({
     })(RestaurantForm);
 
     export default FormikRestaurantForm;
+
