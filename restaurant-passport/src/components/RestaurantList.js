@@ -18,7 +18,7 @@ const RestaurantList = props => {
       websiteURL: "http://www.harrisrestaurant.com/",
       myRating: "",
       notes: "",
-      stamped: false,
+      stamped: true,
       userId: "U01"
     },
     {

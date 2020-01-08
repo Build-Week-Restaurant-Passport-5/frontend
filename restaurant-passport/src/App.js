@@ -4,8 +4,8 @@ import { Route } from "react-router-dom";
 
 //Components
 import RestaurantList from "./components/RestaurantList";
-import SigninForm from "./components/SigninForm";
-import SignupForm from "./components/SignupForm";
+import SigninForm from "./components/signinForm";
+import SignupForm from "./components/signupForm";
 
 //Common Components
 import Navigation from "./components/partials/Navigation";

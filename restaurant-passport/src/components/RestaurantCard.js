@@ -7,6 +7,15 @@ export default function RestaurantCard(props) {
 
   function toggleAnimation() {}
 
+  function beenThere(item){
+    console.log(item.restaurant.stamped)
+    if (item.restaurant.stamped === false) {
+      return <Card.Meta>Not been there yet!</Card.Meta>
+    } else {
+      return <Card.Meta>Been there</Card.Meta>
+    }
+  }
+
   return (
     <Card fluid>
       <Image src='https://via.placeholder.com/150x75.png' wrapped ui={false} />
@@ -22,7 +31,7 @@ export default function RestaurantCard(props) {
         
         <Card.Header>{props.restaurant.name}</Card.Header>
         <Card.Meta>{props.restaurant.city}</Card.Meta>
-        <Card.Description>This card doesn't have any info!</Card.Description>
+        <Card.Meta>{beenThere(props)}</Card.Meta>
       </Card.Content>
 
       <Card.Content extra>
