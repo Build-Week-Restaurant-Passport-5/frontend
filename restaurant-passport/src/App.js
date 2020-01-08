@@ -20,6 +20,7 @@ function App() {
       <Navigation />
       <Container text style={{ marginTop: "2em" }}>
         <Route exact path='/' render={props => <RestaurantList {...props} />} />
+        <Route path='/restaurants' render={props => <RestaurantList {...props} />} />
         <Route path='/signup' render={props => <SignupForm {...props} />} />
         <Route path='/signin' render={props => <SigninForm {...props} />} />
 
