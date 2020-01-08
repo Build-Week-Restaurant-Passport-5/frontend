@@ -10,7 +10,7 @@ const Navigation = () => {
       <Menu.Menu position='right'>
         <Menu.Item as={Link} to='/logout' name='logout' />
         <Menu.Item as={Link} to='/login' name='login' />
-        <Menu.Item as={Link} to='/register' name='register' />
+        <Menu.Item as={Link} to='/signin' name='signin' />
       </Menu.Menu>
     </Menu>
   );
