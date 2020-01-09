@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import { Button, Card, Image, Transition, Rating, Checkbox, Input } from "semantic-ui-react";
 import * as Yup from "yup";
 
 
@@ -31,112 +32,129 @@ useEffect(() => {
 }, [status]);
 
 return (
-    <div className='restaurant-form'>
-        <Form>
-            <label htmlFor='restaurantName'>
-                Restaurant Name
-                <Field
-                    id='restaurantName'
-                    type='text'
-                    name='restaurantName'
-                    placeholder='name of restaurant'
-                />
-                {touched.restaurantName && errors.restaurantName && (
-                    <p className='errors'>{errors.restaurantName}</p>
-                )}
-            </label>
-            <label htmlFor='streetAddress'>
-                Restaurant Address
-                <Field
-                    id='streetAddress'
-                    type='text'
-                    name='streetAddress'
-                    placeholder='Address of restaurant'
-                />
-                {touched.streetAddress && errors.streetAddress && (
-                    <p className='errors'>{errors.streetAddress}</p>
-                )}
-            </label>
-            <label htmlFor='city'>
-                Restaurant City
-                <Field
-                    id='city'
-                    type='text'
-                    name='city'
-                    placeholder='City'
-                />
-                {touched.restaurantCity && errors.restaurantCity && (
-                    <p className='errors'>{errors.city}</p>
-                )}
-            </label>
-            <label htmlFor='zipcode'>
-                Restaurant Zipcode
-                <Field
-                    id='zipcode'
-                    type='text'
-                    name='zipcode'
-                    placeholder='zipcode'
-                />
-                {touched.zipcode && errors.zipcode && (
-                    <p className='errors'>{errors.zipcode}</p>
-                )}
-            </label>
-            <label htmlFor='phoneNumber'>
-                Restaurant Phone Number
-                <Field
-                    id='phoneNumber'
-                    type='text'
-                    name='phoneNumber'
-                    placeholder='Phone Number'
-                />
-                {touched.phoneNumber && errors.phoneNumber && (
-                    <p className='errors'>{errors.phoneNumber}</p>
-                )}
-            </label>
-            <label htmlFor='websiteURL'>
-                Website URL
-                <Field
-                    id='websiteURL'
-                    type='text'
-                    name='websiteURL'
-                    placeholder='Website URL'
-                />
-                {touched.websiteURL && errors.websiteURL && (
-                    <p className='errors'>{errors.websiteURL}</p>
-                )}
-            </label>
-            {/*will update with toggle using Semantic UI*/}     
-            <label className="checkbox-container">
-                Been there!
-                <Field
-                type="checkbox"
-                name="stamped"
-                checked={values.stamped}
-                />
-                <span className="checkmark" />
-            </label>
-            {/*will update with stars using Semantic UI*/}     
-                <Field as="select" className="myRating" name="myRating">
-                    <option disabled>Rate it out of 5</option>
-                    <option value="rating1">1</option>
-                    <option value="rating2">2</option>
-                    <option value="rating3">3</option>
-                    <option value="rating4">4</option>
-                    <option value="rating5">5</option>
-                </Field>
-            <Field as="textarea" type="text" name="notes" placeholder="Notes" />
-            <button type="submit">SAVE</button>
-        </Form>
-        {/*update when API available*/}     
-        {restaurants.map(restaurant => {
-            return (
-            <ul>
-            <li>Name: {restaurant.restaurantName}</li>
-            <li>Address: {restaurant.streetAddress}</li>
-            </ul>
-            );
-        })}
-    </div>
+    <Card fluid>
+        <Card.Content>
+        <Image
+            floated='right'
+            size='medium'
+            src='https://files.slack.com/files-pri/T4JUEB3ME-FRYB8R0LC/restaurant-passport.png'
+           
+          />
+
+        <div className='restaurant-form'>
+            <Form>
+            <Card.Meta>
+                <label htmlFor='restaurantName'>Restaurant Name</label><br />
+                    <Field
+                        id='restaurantName'
+                        type='text'
+                        name='restaurantName'
+                        placeholder='Name of restaurant'
+                    />
+                    {touched.restaurantName && errors.restaurantName && (
+                        <p className='errors'>{errors.restaurantName}</p>
+                    )}
+            </Card.Meta><br />
+
+            <Card.Meta>
+                <label htmlFor='streetAddress'>
+                    Restaurant Address</label><br />
+                    <Field
+                        id='streetAddress'
+                        type='text'
+                        name='streetAddress'
+                        placeholder='Address of restaurant'
+                    />
+                    {touched.streetAddress && errors.streetAddress && (
+                        <p className='errors'>{errors.streetAddress}</p>
+                    )}
+                
+            </Card.Meta><br />
+
+            <Card.Meta>
+                <label htmlFor='city'>
+                    Restaurant City</label><br />
+                    <Field
+                        id='city'
+                        type='text'
+                        name='city'
+                        placeholder='City'
+                    />
+                    {touched.restaurantCity && errors.restaurantCity && (
+                        <p className='errors'>{errors.city}</p>
+                    )}
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <label htmlFor='zipcode'>
+                    Restaurant Zipcode</label><br />
+                    <Field
+                        id='zipcode'
+                        type='text'
+                        name='zipcode'
+                        placeholder='Zipcode'
+                    />
+                    {touched.zipcode && errors.zipcode && (
+                        <p className='errors'>{errors.zipcode}</p>
+                    )}
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <label htmlFor='phoneNumber'>
+                    Restaurant Phone Number</label><br />
+                    <Field
+                        id='phoneNumber'
+                        type='text'
+                        name='phoneNumber'
+                        placeholder='Phone Number'
+                    />
+                    {touched.phoneNumber && errors.phoneNumber && (
+                        <p className='errors'>{errors.phoneNumber}</p>
+                    )}
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <label htmlFor='websiteURL'>
+                    Website URL</label><br />
+                    <Input label='http://' placeholder='site.com' id='websiteURL' name='websiteURL' />
+                    {touched.websiteURL && errors.websiteURL && (
+                        <p className='errors'>{errors.websiteURL}</p>
+                    )}
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <label className="checkbox-container">
+                    Been there?</label><br />
+                    <Checkbox toggle name="stamped" className="checkmark" />
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <label className="rating-container">
+                    Rating</label><br />
+                <Rating icon='star' defaultRating={0} maxRating={5} className='myRating' name="myRating" />
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <Input focus placeholder='notes...' size='big' name="notes" />
+                </Card.Meta><br />
+
+                <Card.Meta>
+                <Button type="submit">SAVE</Button>
+                </Card.Meta><br />
+            </Form>
+
+            {/*update when API available*/}     
+            {restaurants.map(restaurant => {
+                return (
+                <ul>
+                <li>Name: {restaurant.restaurantName}</li>
+                <li>Address: {restaurant.streetAddress}</li>
+                </ul>
+                );
+            })}
+        </div>
+        </Card.Content>
+    </Card>
     );
 };
 
