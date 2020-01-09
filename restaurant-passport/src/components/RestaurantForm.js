@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import { Button, Card, Image, Transition, Rating, Checkbox, Input } from "semantic-ui-react";
 import * as Yup from "yup";
+import StarsInput from "./custom-formik-component/StarsInput";
+
 
 
 const RestaurantForm = ({ values, errors, touched, status }) => {
@@ -116,22 +118,36 @@ return (
                 <Card.Meta>
                 <label htmlFor='websiteURL'>
                     Website URL</label><br />
-                    <Input label='http://' placeholder='site.com' id='websiteURL' name='websiteURL' />
+                    <Field 
+                        type='text'
+                        id='websiteURL' 
+                        name='websiteURL' 
+                        label='http://' 
+                        placeholder='site.com' 
+                        id='websiteURL' 
+                         />
                     {touched.websiteURL && errors.websiteURL && (
                         <p className='errors'>{errors.websiteURL}</p>
                     )}
                 </Card.Meta><br />
 
                 <Card.Meta>
-                <label className="checkbox-container">
+                <label htmlFor="stamped">
                     Been there?</label><br />
-                    <Checkbox toggle name="stamped" className="checkmark" />
+                    <Field 
+                        type='checkbox'
+                        id='stamped' 
+                        name='stamped' 
+                         />
+                    {touched.stamped && errors.stamped && (
+                        <p className='errors'>{errors.stamped}</p>
+                    )}
                 </Card.Meta><br />
 
                 <Card.Meta>
                 <label className="rating-container">
                     Rating</label><br />
-                <Rating icon='star' defaultRating={0} maxRating={5} className='myRating' name="myRating" />
+                <StarsInput />
                 </Card.Meta><br />
 
                 <Card.Meta>
