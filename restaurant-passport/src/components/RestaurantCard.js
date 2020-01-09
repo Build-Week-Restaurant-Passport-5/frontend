@@ -1,37 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Image, Transition } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export default function RestaurantCard(props) {
   console.log("Card: ", props);
 
-  function toggleAnimation() {}
+  let [visible, setVisible] = useState(true);
+  let [pulse, setPulse] = useState(true);
 
-  function beenThere(item){
+  function toggleVisibility() {
+    setVisible(!visible)
+  }
+  function togglePulse() {
+    setPulse(!pulse)
+  }
+
+  function beenThere(item) {
     console.log(item.restaurant.stamped)
     if (item.restaurant.stamped === false) {
-      return <Card.Meta>Not been there yet!</Card.Meta>
+      return "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2.png?raw=true"
     } else {
-      return <Card.Meta>Been there</Card.Meta>
+      return "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2-primary.png?raw=true"
     }
   }
 
   return (
     <Card fluid>
-      <Image src='https://via.placeholder.com/150x75.png' wrapped ui={false} />
+
+
       <Card.Content>
-       
+        <Transition visible={pulse} animation='pulse' duration={500}>
           <Image
             floated='left'
             size='mini'
-            src='https://files.slack.com/files-pri/T4JUEB3ME-FRYB8R0LC/restaurant-passport.png'
+            src={beenThere(props)}
             width='100px'
-           
+            onClick={togglePulse}
           />
-        
-        <Card.Header>{props.restaurant.name}</Card.Header>
+        </Transition>
+
+        <Card.Header>{props.restaurant.restaurantName}</Card.Header>
         <Card.Meta>{props.restaurant.city}</Card.Meta>
-        <Card.Meta>{beenThere(props)}</Card.Meta>
       </Card.Content>
 
       <Card.Content extra>
@@ -43,9 +52,12 @@ export default function RestaurantCard(props) {
             color='blue'>
             View
           </Button>
-          <Button basic color='red'>
+          {/* <Button basic color='red'>
             Delete
-          </Button>
+          </Button> */}
+
+
+
         </div>
       </Card.Content>
     </Card>

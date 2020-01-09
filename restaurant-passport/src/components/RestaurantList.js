@@ -8,48 +8,23 @@ import RestaurantCard from "./RestaurantCard";
 
 const RestaurantList = props => {
   const [restaurants, setRestaurants] = useState([
-    {
-      id: 1,
-      name: "Steak House",
-      address: "123 Main St",
-      city: "San Francisco",
-      zipcode: "91234",
-      phoneNumber: "555-01234",
-      websiteURL: "http://www.harrisrestaurant.com/",
-      myRating: "",
-      notes: "",
-      stamped: true,
-      userId: "U01"
-    },
-    {
-      id: 2,
-      name: "Italian Pizza",
-      address: "125 Main St",
-      city: "San Francisco",
-      zipcode: "91234",
-      phoneNumber: "555-01235",
-      websiteURL: "https://www.caffebaonecci.com/",
-      myRating: "",
-      notes: "",
-      stamped: false,
-      userId: "U01"
-    }
   ]);
 
-  //   const getRestaurants = () => {
-  //     axios
-  //       .get(
-  //         "http://www.figma.com/file/SgBV7eLTJ6pU38zmOxEyes/restaurant_passport"
-  //       )
-  //       .then(response => {
-  //         console.log(response);
-  //       })
-  //       .catch(error => {
-  //         console.error("Server Error", error);
-  //       });
-  //   };
+  const getRestaurants = () => {
+    axios
+      .get(
+        "https://restaurant-passport-5.herokuapp.com/api/restaurants"
+      )
+      .then(response => {
+        console.log(response.data);
+        setRestaurants(response.data);
+      })
+      .catch(error => {
+        console.error("Server Error", error);
+      });
+  };
 
-  //   useEffect(getRestaurants, []);
+  useEffect(getRestaurants, []);
 
   return (
     <Card.Group itemsPerRow={2} className='restaurant-list'>
