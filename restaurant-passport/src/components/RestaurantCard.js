@@ -15,6 +15,15 @@ export default function RestaurantCard(props) {
     setPulse(!pulse)
   }
 
+  function beenThere(item){
+    console.log(item.restaurant.stamped)
+    if (item.restaurant.stamped === false) {
+      return <Card.Meta>Not been there yet!</Card.Meta>
+    } else {
+      return <Card.Meta>Been there</Card.Meta>
+    }
+  }
+
   return (
     <Card fluid>
       <Transition visible={visible} animation='scale' duration={500}>
@@ -34,7 +43,7 @@ export default function RestaurantCard(props) {
 
         <Card.Header>{props.restaurant.name}</Card.Header>
         <Card.Meta>{props.restaurant.city}</Card.Meta>
-        <Card.Description>This card doesn't have any info!</Card.Description>
+        <Card.Meta>{beenThere(props)}</Card.Meta>
       </Card.Content>
 
       <Card.Content extra>
