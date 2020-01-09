@@ -49,17 +49,17 @@ const SignupForm = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.password}</p>
           )}
         </label>
-        <label htmlFor="password2">
+        <label htmlFor="confirm_password">
           Confirm Password
 
           <Field
-            id="password2"
-            type="password"
-            name="password2"
+            id="confirm_password"
+            type="confirm_password"
+            name="confirm_password"
             placeholder="Confirm Password"
           />
-          {touched.password && errors.password && (
-            <p className="errors">{errors.password}</p>
+          {touched.confirm_password && errors.confirm_password && (
+            <p className="errors">{errors.confirm_password}</p>
           )}
         </label>
 
