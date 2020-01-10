@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import { Card } from "semantic-ui-react";
+import { Card, Icon } from "semantic-ui-react";
 
 import RestaurantCard from "./RestaurantCard";
 
@@ -28,6 +28,7 @@ const RestaurantList = props => {
 
   return (
     <Card.Group itemsPerRow={2} className='restaurant-list'>
+      <Link to='/add'><Icon size='large' circular  name='add' link /></Link>
       {restaurants.map(item => (
         <RestaurantCard key={item.id} restaurant={item} />
       ))}
