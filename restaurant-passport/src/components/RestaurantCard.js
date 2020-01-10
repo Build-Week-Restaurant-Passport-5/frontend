@@ -17,15 +17,11 @@ export default function RestaurantCard(props) {
 
   function beenThere(item) {
     console.log(item.restaurant.stamped)
-    if (item.restaurant.stamped === false) {
-      return "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2.png?raw=true"
-    } else {
-      return "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2-primary.png?raw=true"
-    }
+    return (item.restaurant.stamped ? "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2-primary.png?raw=true" : "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2.png?raw=true")
   }
 
   return (
-    <Card fluid>
+    <Card >
 
 
       <Card.Content>
