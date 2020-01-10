@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import { Button, Card, Image } from "semantic-ui-react";
 import * as Yup from "yup";
 import StarsInput from "./custom-formik-component/StarsInput";
+import axios from 'axios';
 
 
 
@@ -124,7 +125,6 @@ return (
                         name='websiteURL' 
                         label='http://' 
                         placeholder='site.com' 
-                        id='websiteURL' 
                          />
                     {touched.websiteURL && errors.websiteURL && (
                         <p className='errors'>{errors.websiteURL}</p>
@@ -200,19 +200,37 @@ const FormikRestaurantForm = withFormik({
         }),
     
 
-      handleSubmit(values, { setStatus, resetForm }) {
-        console.log("submitting", values);
-        // axios
-        //   .post("", values)
-        //   .then(res => {
-        //     console.log("success", res);
-        //     setStatus(res.data);
+    //   handleSubmit(values, { setStatus, resetForm }) {
+    //     console.log("submitting", values);
+    //     // axios
+    //     //   .post("", values)
+    //     //   .then(res => {
+    //     //     console.log("success", res);
+    //     //     setStatus(res.data);
     
-        //     //clears form inputs, from FormikBag
-        //     resetForm();
-        //   })
-        //   .catch(err => console.log(err.response));
-      }
+    //     //     //clears form inputs, from FormikBag
+    //     //     resetForm();
+    //     //   })
+    //     //   .catch(err => console.log(err.response));
+    //   }
+
+    handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+        
+          axios
+            .post(`https://restaurant-passport-5.herokuapp.com/api/restaurants/${1}`, values)
+            .then(res => {
+              console.log(res); // Data was created successfully and logs to console
+              resetForm();
+              setSubmitting(false);
+              //add redirect to homepage
+            })
+            .catch(err => {
+              console.log(err); // There was an error creating the data and logs to console
+              setSubmitting(false);
+            });
+        
+
+}
     })(RestaurantForm);
 
     export default FormikRestaurantForm;
