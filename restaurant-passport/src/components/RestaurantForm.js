@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
-import { Button, Card, Image, Transition, Rating, Checkbox, Input } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import * as Yup from "yup";
 import StarsInput from "./custom-formik-component/StarsInput";
 
@@ -151,7 +151,12 @@ return (
                 </Card.Meta><br />
 
                 <Card.Meta>
-                <Input focus placeholder='notes...' size='big' name="notes" />
+                <Field
+                    type='text'
+                    id='notes' 
+                    name='notes' 
+                    placeholder='notes...'
+                />
                 </Card.Meta><br />
 
                 <Card.Meta>
@@ -188,6 +193,11 @@ const FormikRestaurantForm = withFormik({
             stamped: props.stamped || false,
         };
       },
+
+        validationSchema: Yup.object().shape({
+            restaurantName: Yup.string().required('Please enter name'),
+
+        }),
     
 
       handleSubmit(values, { setStatus, resetForm }) {

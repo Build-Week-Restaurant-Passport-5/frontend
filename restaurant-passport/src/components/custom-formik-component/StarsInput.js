@@ -2,7 +2,7 @@ import React from "react";
 import { Field } from "formik";
 
 import Stars from "./Stars";
-const fieldName = "stars";
+const fieldName = "myRating";
 
 const StarsInput = () => (
   <Field name={fieldName} id={fieldName} type="number">
