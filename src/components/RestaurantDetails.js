@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
+import axios from 'axios';
+import { Button, Card, Image, Transition, Icon, Rating } from "semantic-ui-react";
+
 
 const RestaurantDetails = ({ match }) => {
     const [details, setDetails] = useState({});
@@ -17,17 +19,22 @@ const RestaurantDetails = ({ match }) => {
             });
     };
     useEffect(getRestaurants, []);
-    console.log("Item:", details.restaurantName);
+    console.log("Item:", details);
+    var rating = details.myRating;
 
     return <div>
-        <h1>{details.restaurantName}</h1>
-        <p>{details.streetAddress}</p>
-        <p>{details.city}</p>
-        <p>{details.zipcode}</p>
-        <p>{details.phoneNumber}</p>
-        <p>{details.websiteURL}</p>
-        <p>{details.myRating}</p>
-        <p>{details.notes}</p>
+    <Card fluid>
+        <Card.Content>
+        <Card.Header>        <Icon name='food' /> {details.restaurantName}</Card.Header>
+        <Card.Meta>{details.streetAddress}</Card.Meta>
+        <Card.Meta>{details.city}</Card.Meta>
+        <Card.Meta>{details.zipcode}</Card.Meta>
+        <Card.Meta>{details.phoneNumber}</Card.Meta>
+        <Card.Meta><a href={details.websiteURL}>{details.websiteURL}</a> </Card.Meta>
+<Card.Meta><Rating defaultRating={ details.myRating } maxRating={5} disabled /></Card.Meta>
+        <Card.Meta>{details.notes}</Card.Meta>
+        </Card.Content>
+    </Card>
     </div>;
 };
 
