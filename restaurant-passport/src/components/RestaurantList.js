@@ -27,8 +27,8 @@ const RestaurantList = props => {
   useEffect(getRestaurants, []);
 
   return (
-    <Card.Group itemsPerRow={2} className='restaurant-list'>
-      <Link to='/add'><Icon size='large' circular  name='add' link /></Link>
+    <Card.Group itemsPerRow={3} className='restaurant-list'>
+      <Link to='/add'><Icon size='large' circular name='add' link /></Link>
       {restaurants.map(item => (
         <RestaurantCard key={item.id} restaurant={item} />
       ))}

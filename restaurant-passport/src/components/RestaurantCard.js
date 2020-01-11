@@ -21,7 +21,7 @@ export default function RestaurantCard(props) {
   }
 
   return (
-    <Card >
+    <Card fluid>
 
 
       <Card.Content>
@@ -43,7 +43,7 @@ export default function RestaurantCard(props) {
         <div className='ui two buttons'>
           <Button
             as={Link}
-            to={`/restaurants/${props.restaurant.id}}`}
+            to={`/restaurants/${props.restaurant.id}`}
             basic
             color='blue'>
             View
