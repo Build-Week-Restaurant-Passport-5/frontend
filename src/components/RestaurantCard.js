@@ -17,7 +17,7 @@ export default function RestaurantCard(props) {
 
   function beenThere(item) {
     console.log(item.restaurant.stamped)
-    return (item.restaurant.stamped ? "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2-primary.png?raw=true" : "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/restaurant-passport/design_files/restaurant-passport-v2.png?raw=true")
+    return (item.restaurant.stamped ? "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/design_files/restaurant-passport-v2-primary.png?raw=true" : "https://github.com/Build-Week-Restaurant-Passport-5/frontend/blob/master/design_files/restaurant-passport-v2.png?raw=true")
   }
 
   return (
