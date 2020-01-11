@@ -7,8 +7,7 @@ import { Card, Icon } from "semantic-ui-react";
 import RestaurantCard from "./RestaurantCard";
 
 const RestaurantList = props => {
-  const [restaurants, setRestaurants] = useState([
-  ]);
+  const [restaurants, setRestaurants] = useState([]);
 
   const getRestaurants = () => {
     axios
@@ -35,5 +34,7 @@ const RestaurantList = props => {
     </Card.Group>
   );
 };
+
+
 
 export default RestaurantList;
