@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import { Button, Card, Image } from "semantic-ui-react";
 import * as Yup from "yup";
@@ -7,10 +8,14 @@ import axios from 'axios';
 
 
 
+
 const RestaurantForm = ({ values, errors, touched, status }) => {
     console.log('value', values);
     console.log('errors', errors);
     console.log('touched', touched);
+
+    
+    
 
 
 // Example schema:
@@ -27,14 +32,29 @@ const RestaurantForm = ({ values, errors, touched, status }) => {
     // userId: 'U01'
 
     const [restaurants, setRestaurants] = useState([]);
+ 
+    var history = useHistory();
+
 
 useEffect(() => {
     console.log('status has changed', status);
 
+    if (status === 'success') {
+        console.log('did it!');
+        history.push('/restaurants');
+    }
+
+
     status && setRestaurants(restaurants => [...restaurants, status]);
 }, [status]);
 
+
+
+
 return (
+    <div>
+  
+    
     <Card fluid>
         <Card.Content>
         <Image
@@ -160,24 +180,18 @@ return (
                 </Card.Meta><br />
 
                 <Card.Meta>
-                <Button type="submit">SAVE</Button>
+                <Button type="submit" id='submit-button'>SAVE</Button>
                 </Card.Meta><br />
             </Form>
-
-            {/*update when API available*/}     
-            {restaurants.map(restaurant => {
-                return (
-                <ul>
-                <li>Name: {restaurant.restaurantName}</li>
-                <li>Address: {restaurant.streetAddress}</li>
-                </ul>
-                );
-            })}
         </div>
         </Card.Content>
+
     </Card>
+    </div>
+
     );
 };
+
 
 const FormikRestaurantForm = withFormik({
       mapPropsToValues(props) {
@@ -192,6 +206,7 @@ const FormikRestaurantForm = withFormik({
             notes: props.notes || "",
             stamped: props.stamped || false,
         };
+
       },
 
         validationSchema: Yup.object().shape({
@@ -199,6 +214,7 @@ const FormikRestaurantForm = withFormik({
 
         }),
     
+        
 
     //   handleSubmit(values, { setStatus, resetForm }) {
     //     console.log("submitting", values);
@@ -214,7 +230,8 @@ const FormikRestaurantForm = withFormik({
     //     //   .catch(err => console.log(err.response));
     //   }
 
-    handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+
+    handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, setSubmitted, setShowModel }) {
         
           axios
             .post(`https://restaurant-passport-5.herokuapp.com/api/restaurants/${1}`, values)
@@ -222,7 +239,13 @@ const FormikRestaurantForm = withFormik({
               console.log(res); // Data was created successfully and logs to console
               resetForm();
               setSubmitting(false);
-              //add redirect to homepage
+              setStatus('success');
+              setStatus('ready');
+
+
+
+            //   alert(`Restaurant added! Nom Nom Nom  \nAdd another or see your list?`);
+
             })
             .catch(err => {
               console.log(err); // There was an error creating the data and logs to console
